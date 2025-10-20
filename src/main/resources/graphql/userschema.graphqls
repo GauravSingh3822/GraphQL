@@ -37,7 +37,14 @@ type Mutation {
     updateUser(userId:ID!,user:UserInput): UserEntity
     deleteUser(userId: ID!): Boolean
 
-    createOrder(orderName: String!, orderDescription: String!, orderPrice: Float!, userId: ID!): OrderEntity
-    updateOrder(orderId: ID!, orderName: String, orderDescription: String, orderPrice: Float, userId: ID): OrderEntity
+    createOrder(orderName: String!,
+        orderDescription: String!,
+        orderPrice: Float!,
+        userId: ID!): OrderEntity
+    updateOrder(orderId: ID!,
+        orderName: String,
+        orderDescription: String,
+        orderPrice: Float,
+        userId: ID): OrderEntity
     deleteOrder(orderId: ID!): Boolean
 }
