@@ -1,0 +1,43 @@
+type UserEntity {
+    userId: ID!
+    userName: String
+    userEmail: String
+    userCity: String
+    userPhone: String
+    orders: [OrderEntity]
+
+}
+
+type OrderEntity {
+    orderId: ID!
+    orderName: String
+    orderDescription: String
+    orderPrice: Float
+    user: UserEntity!
+}
+
+type Query {
+    getAllUsers: [UserEntity]
+    getUserById(userId: ID!): UserEntity
+    getUserOrderById(userId :ID!): [OrderEntity]
+    getAllOrders: [OrderEntity]
+    getOrderById(orderId: ID): OrderEntity
+}
+
+
+input UserInput {
+    userName: String!
+    userEmail: String!
+    userCity: String!
+    userPhone: String!
+}
+
+type Mutation {
+    createUser(user:UserInput): UserEntity
+    updateUser(userId:ID!,user:UserInput): UserEntity
+    deleteUser(userId: ID!): Boolean
+
+    createOrder(orderName: String!, orderDescription: String!, orderPrice: Float!, userId: ID!): OrderEntity
+    updateOrder(orderId: ID!, orderName: String, orderDescription: String, orderPrice: Float, userId: ID): OrderEntity
+    deleteOrder(orderId: ID!): Boolean
+}
